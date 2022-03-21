@@ -17,12 +17,15 @@
 
   <title>Portfolio</title>
 
-  <link href="./assets/css/main.d8e0d294.css" rel="stylesheet" />
+  <link href="./main.d8e0d294.css" rel="stylesheet" />
+
+  <!-- POPMOTION -->
+  
 </head>
 
 <body class="">
   <!-- Add your content of header -->
-  <div class="background-color-layer" style="background-image: url('assets/images/img-01.jpg')"></div>
+  <div class="background-color-layer" style="background-image: url('img-01.jpg')"></div>
   <main class="content-wrapper">
     <header class="white-text-container section-container">
       <div class="text-center">
@@ -59,7 +62,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <p>
-                    <img src="./assets/images/img-01.jpg" class="img-responsive" alt="" />
+                    <img src="./img-01.jpg" class="img-responsive" alt="" />
                   </p>
                 </div>
                 <div class="col-md-8">
@@ -82,17 +85,17 @@
               <h2>Projects</h2>
               <div class="row">
                 <div class="col-md-4">
-                  <img src="./assets/images/img-02.jpg" class="img-responsive" alt="" />
+                  <img src="./img-02.jpg" class="img-responsive" alt="" />
                   <h3 class="h5">ML</h3>
                   <p>June 2017</p>
                 </div>
                 <div class="col-md-4">
-                  <img src="./assets/images/img-03.jpg" class="img-responsive" alt="" />
+                  <img src="./img-03.jpg" class="img-responsive" alt="" />
                   <h3 class="h5">Backend</h3>
                   <p>March 2017</p>
                 </div>
                 <div class="col-md-4">
-                  <img src="./assets/images/img-04.jpg" class="img-responsive" alt="" />
+                  <img src="./img-04.jpg" class="img-responsive" alt="" />
                   <h3 class="h5">Luggage Tracer</h3>
                   <p>Jan 2017</p>
                 </div>
@@ -154,14 +157,14 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                   <div class="item active">
-                    <img src="./assets/images/img-05.jpg" class="img-responsive" alt="..." />
+                    <img src="./img-05.jpg" class="img-responsive" alt="..." />
                     <div class="carousel-caption">
                       <h3 class="h5">Bootcamp on portfolio development</h3>
                       <p>2017</p>
                     </div>
                   </div>
                   <div class="item">
-                    <img src="./assets/images/img-06.jpg" class="img-responsive" alt="..." />
+                    <img src="./img-06.jpg" class="img-responsive" alt="..." />
                     <div class="carousel-caption">
                       <h3 class="h5">Bootcamp on portfolio development</h3>
                       <p>2017</p>
@@ -169,7 +172,7 @@
                   </div>
 
                   <div class="item">
-                    <img src="./assets/images/img-08.jpg" class="img-responsive" alt="..." />
+                    <img src="./img-08.jpg" class="img-responsive" alt="..." />
                     <div class="carousel-caption">
                       <h3 class="h5">Bootcamp on portfolio development</h3>
                       <p>2017</p>
@@ -207,7 +210,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card box">
             <div class="card-block">
               <h2>Contact</h2>
               <form action="" class="reveal-content">
@@ -236,7 +239,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <p><img src="./assets/images/mashup-icon.svg" alt="" /></p>
+          <p><img src="./mashup-icon.svg" alt="" /></p>
 
           <p>
             ©All right reserved. Dibyasom
@@ -267,6 +270,28 @@
   </script>
 
   <script type="text/javascript" src="./main.bc58148c.js"></script>
+  <script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+  <script>
+    const ball = document.querySelector(".box");
+const divStyler = popmotion.styler(ball);
+const ballXY = popmotion.value({ x: 0, y: 0 }, divStyler.set);
+
+popmotion.listen(ball, "mousedown touchstart").start(e => {
+  e.preventDefault();
+  popmotion.pointer(ballXY.get()).start(ballXY);
+});
+
+popmotion.listen(document, "mouseup").start(() => {
+  popmotion
+    .spring({
+      from: ballXY.get(),
+      velocity: ballXY.getVelocity(),
+      to: { x: 0, y: 0 },
+      stiffness: 200
+    })
+    .start(ballXY);
+});
+  </script>
 </body>
 
 </html>
